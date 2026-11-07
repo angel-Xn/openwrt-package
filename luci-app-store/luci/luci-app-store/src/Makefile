@@ -24,4 +24,4 @@ endif
 	mkdir -p "$(DESTDIR)$(LUCI_LIBRARYDIR)/i18n"
 	$(foreach lang,$(LUCI_LANGUAGES),$(foreach po,$(wildcard ${CURDIR}/po/$(lang)/*.po), \
 	po2lmo $(po) \
-		$(DESTDIR)$(LUCI_LIBRARYDIR)/i18n/$(basename $(notdir $(po))).$(lang).lmo;))
+		$(DESTDIR)$(LUCI_LIBRARYDIR)/i18n/$(basename $(notdir $(po))).$(firstword $(LUCI_LC_ALIAS.$(lang)) $(lang)).lmo;))
